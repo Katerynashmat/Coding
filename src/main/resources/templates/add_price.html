@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    div {
+        padding: 10px;
+        margin-bottom: 25px;
+        width: 95%; /* Ширина таблицы */
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+</style>
+<body>
+<div>
+<form th:if = "!${addPriceRequestDto}" th:action="@{/addPrice}" th:object="${addPriceRequestDto}" method="post">
+    <input type="hidden" name="id" th:value="${itemId}" ><br>
+    <label>addPriceValue:</label><br>
+    <input type="text" name="addValue"><br>
+    <input type="submit" value="submit">
+</form>
+</div>
+
+<div>
+<form th:unless = "!${addPriceRequestDto}" th:action="@{/addPrice}" th:object="${addPriceRequestDto}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" th:value="${addPriceRequestDto.item}" ><br>
+    <label>addPriceValue:</label><br>
+    <input type="text" name="addValue" th:value="${addPriceRequestDto.addPriceValue}"><br>
+    <input type="submit" value="submit">
+</form>
+</div>
+
+
+
+
+</body>
+</html>
